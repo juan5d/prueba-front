@@ -81,16 +81,17 @@ export class SolicitudDetalleComponent implements OnInit {
       console.error('El idSolicitud es inválido o no se ha asignado');
       return;
     }
-console.log(this.idSolicitud)
+
     this.solicitudServicio.obtener(this.idSolicitud).subscribe({
       next: (data) => {
+        console.log("sss",data)
         if (data) {
           this.formSolicitud.patchValue({
-            nombre: data[0].nombre,
-            apellido: data[0].apellido,
-            correo: data[0].correo,
-            fecha_ingres: data[0].fecha_ingres,
-            solicitud: data[0].solicitud
+            nombre: data?.nombre,
+            apellido: data?.apellido,
+            correo: data?.correo,
+            fecha_ingres: data?.fecha_ingres,
+            solicitud: data?.solicitud
           });
         }
       },
@@ -170,7 +171,11 @@ console.log(this.idSolicitud)
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
   }
 
-  volver(objeto:Solicitud){
+  ver(){
+    this.router.navigate(['/solicitud/detalle',this.idSolicitud])
+  }
+
+  volver(){
     this.router.navigate(['/'])
   }
 }

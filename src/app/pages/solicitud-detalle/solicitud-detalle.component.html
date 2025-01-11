@@ -34,6 +34,8 @@
           
               </mat-card-content>
             </mat-card>
+            <button mat-stroked-button  (click)="volver()">Atras</button>
+            <button mat-raised-button color="primary" type="submit" (click)="ver()">Detalle</button>
           </form>
         <table mat-table [dataSource]="listaRequerimiento" class="mat-elevation-z2" style="margin-top: 20px;">
 
@@ -65,6 +67,7 @@
             </ng-container>
 
             <!-- Symbol Column -->
+            
           
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

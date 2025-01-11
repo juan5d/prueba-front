@@ -33,7 +33,7 @@ export class RequerimientoService {
       );
     }
   crear(objeto:Requerimiento){
-    return this.http.post<Requerimiento>(this.apiUrl,objeto);
+    return this.http.post<Response>(this.apiUrl,objeto);
   }
   editar(objeto:Requerimiento){
     return this.http.put<Response>(this.apiUrl,objeto);

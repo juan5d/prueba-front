@@ -78,11 +78,11 @@ export class SolicitudComponent implements OnInit {
         next: (data) => {
           if (data) {
             this.formSolicitud.patchValue({
-              nombre: data[0].nombre,
-              apellido: data[0].apellido,
-              correo: data[0].correo,
-              fecha_ingres: data[0].fecha_ingres,
-              solicitud: data[0].solicitud,
+              nombre: data?.nombre,
+              apellido: data?.apellido,
+              correo: data?.correo,
+              fecha_ingres: data?.fecha_ingres,
+              solicitud: data?.solicitud,
             });
           }
         },
@@ -133,5 +133,9 @@ export class SolicitudComponent implements OnInit {
     const seconds = date.getSeconds().toString().padStart(2, '0');
   
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  }
+
+  volver(){
+    this.router.navigate(['/'])
   }
 }

@@ -27,7 +27,7 @@ export class SolicitudService {
 
   obtener(id: string) {
     return this.http.get<{ success: boolean; data: Solicitud[] }>(`${this.apiUrl}/${id}`).pipe(
-      map((response) => response.data),
+      map((response) => response.data[0]),
       catchError(this.handleError('obtener la solicitud'))
     );
   }
