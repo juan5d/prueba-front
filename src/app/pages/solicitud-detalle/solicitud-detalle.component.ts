@@ -150,7 +150,7 @@ export class SolicitudDetalleComponent implements OnInit {
       estado: this.formRequerimiento.get('estado')?.value,
       fecha_solucion: fechaSolucion ? this.formatDate(new Date(fechaSolucion)) : null // Formatear la fecha
     };
-
+console.log(objeto)
     this.requerimientoServicio.crear(objeto).subscribe({
       next:(data)=>{
           this.router.navigate(["/"]);

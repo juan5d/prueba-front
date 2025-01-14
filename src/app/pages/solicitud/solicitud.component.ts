@@ -23,8 +23,8 @@ import { Soporte } from '../../interfaces/soporte';
   styleUrl: './solicitud.component.scss'
 })
 export class SolicitudComponent implements OnInit {
-  @Input('id') idSolicitud!: string;
-
+  
+public idSolicitud!: string;
   public listaSolicitud: Solicitud[] = [];
   public listaRequerimiento: Requerimiento[] = [];
   public listaSoporte: Soporte[] = [];
@@ -51,57 +51,7 @@ export class SolicitudComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      const id = params.get('id');
-      if (id && !isNaN(Number(id))) {
-        this.idSolicitud = id;
-      } else {
-        console.error('El ID de la solicitud no es válido');
-        this.router.navigate(['/error']); // Redirigir a una página de error
-      }
-    });
-      // Cargar soporte
-      this.soporteServicio.lista().subscribe({
-        next: (data) => {
-          if (data) {
-            this.listaSoporte = data;
-          }
-        },
-        error: (err) => {
-          console.error('Error al obtener los soportes:', err.message);
-        },
-      });
 
-      // Cargar solicitud
-      console.log("id",this.idSolicitud)
-      this.solicitudServicio.obtener(this.idSolicitud).subscribe({
-        next: (data) => {
-          if (data) {
-            this.formSolicitud.patchValue({
-              nombre: data?.nombre,
-              apellido: data?.apellido,
-              correo: data?.correo,
-              fecha_ingres: data?.fecha_ingres,
-              solicitud: data?.solicitud,
-            });
-          }
-        },
-        error: (err) => {
-          console.error('Error al obtener la solicitud:', err.message);
-        },
-      });
-
-      // Cargar requerimientos
-      this.requerimientoServicio.obtener(this.idSolicitud).subscribe({
-        next: (data) => {
-          if (data.length > 0) {
-            this.listaRequerimiento = data;
-          }
-        },
-        error: (err) => {
-          console.error('Error al obtener los requerimientos:', err.message);
-        },
-      });
   }
 
   guardar() {
