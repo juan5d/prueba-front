@@ -1,7 +1,7 @@
 
 <mat-card style="width: 70%; margin: 50px auto;"appearance="outlined">
     <mat-card-header>
-        <mat-card-title>Lista solicitudes</mat-card-title>
+        <mat-card-title>Crear solicitud</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <form [formGroup]="formSolicitud">
@@ -29,7 +29,7 @@
 
                 <mat-form-field appearance="fill">
                     <mat-label>Solicitud</mat-label>
-                    <textarea matInput formControlName="solicitud" ></textarea>
+                    <input matInput formControlName="solicitud" >
                   </mat-form-field>
                   <button mat-raised-button color="primary" type="submit" (click)="guardar()">Guardar</button>
               </mat-card-content>
